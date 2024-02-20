@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+       <link rel="stylesheet" th:href="@{/styles.css}">
+    </head>
+    <main>
+        <section class="add-student">
+            <form action="students/addStudents" method="post" class="add-student-form">
+                <input class="form-input" type="text" placeholder="Name" name="name">
+                <input class="form-input" type="text" placeholder="Hair Colour" name="hair">
+                <input class="form-input" type="text" placeholder="Weight" name="weight">
+                <input class="form-input" type="text" placeholder="Height" name="height">
+                <input class="form-input" type="text" placeholder="GPA" name="gpa">
+                <button id="submit-button" class="submit-button"  type="submit" value="SEND">Submit</button>
+
+            </form>
+        </section>
+    </main>
+</html>

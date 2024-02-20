@@ -1,0 +1,41 @@
+.rectangle
+{
+
+    height: 100px;
+    width: 50px;
+    background-color: blue;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+
+
+
+}
+
+.students-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    border: solid black 3px;
+}
+
+.submit-button{
+    background-color: blueviolet;
+    color: rgb(219, 192, 244);
+    border-radius: 1em;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.submit-button:hover{
+    background-color: rgb(198, 167, 227);
+    color: blueviolet;
+    transition: 0.3ms;
+    border-radius: 1em;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+}
