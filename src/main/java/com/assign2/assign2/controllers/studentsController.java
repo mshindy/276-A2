@@ -34,7 +34,7 @@ public class studentsController {
         List<students> students = studentsRepo.findAll();
         // end of databse call
         model.addAttribute("st", students);
-        return "/students/showAll";
+        return "students/showAll";
     }
 
     // @PostMapping("/students/addStudents")
