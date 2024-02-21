@@ -60,20 +60,21 @@ function validateForm() {
     var gpaInput = document.getElementById("gpaInput");
     var hairInput = document.getElementById("hairInput");
   
-    var nameRegex = /^[A-Za-z0-9]+$/;
+    var letterRegex = /^[A-Za-z]+$/;
+    var intRegex = /^[A-Za-z0-9]+$/;
     var numberRegex = /^[0-9.]+$/;
   
-    if (!nameRegex.test(nameInput.value)) {
-      alert("Name should contain only characters or numbers.");
+    if (!letterRegex.test(nameInput.value)) {
+      alert("Name should contain only characters.");
       return false;
     }
   
-    if (!numberRegex.test(heightInput.value)) {
+    if (!intRegex.test(heightInput.value)) {
       alert("Height should contain only numbers.");
       return false;
     }
   
-    if (!numberRegex.test(weightInput.value)) {
+    if (!intRegex.test(weightInput.value)) {
       alert("Weight should contain only numbers.");
       return false;
     }
@@ -83,8 +84,8 @@ function validateForm() {
       return false;
     }
   
-    if (!nameRegex.test(hairInput.value)) {
-      alert("Hair color should contain only characters or numbers.");
+    if (!letterRegex.test(hairInput.value)) {
+      alert("Hair color should contain only characters.");
       return false;
     }
 
