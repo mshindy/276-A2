@@ -48,7 +48,7 @@ public class studentsController {
         String newHair = newstudent.get("hair");
         studentsRepo.save(new students(newName, newHair, newHeight, newWeight, newGpa));
         response.setStatus(201);
-        return "/students/addedStudent";
+        return "students/addedStudent";
 
     }
 
