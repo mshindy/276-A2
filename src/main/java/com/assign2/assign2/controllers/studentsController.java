@@ -14,13 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.ui.Model;
-// import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 // import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 // import org.springframework.web.bind.annotation.DeleteMapping;
 // import org.springframework.http.ResponseEntity;
-// import java.util.Map;
+import java.util.Map;
 // import com.assign2.assign2.models.StudentsRepository;
 
 @Controller
@@ -37,20 +37,20 @@ public class studentsController {
         return "students/showAll";
     }
 
-    // @PostMapping("/students/addStudents")
-    // public String addStudent(@RequestParam Map<String, String> newstudent, HttpServletResponse response)
-    // {
-    //     System.out.println("ADD student");
-    //     String newName = newstudent.get("name");
-    //     Integer newHeight = Integer.parseInt(newstudent.get("height"));
-    //     Integer newWeight= Integer.parseInt(newstudent.get("weight"));
-    //     Double newGpa= Double.parseDouble(newstudent.get("gpa"));
-    //     String newHair = newstudent.get("hair");
-    //     studentsRepo.save(new students(newName, newHair, newHeight, newWeight, newGpa));
-    //     response.setStatus(201);
-    //     return "/students/addedStudent";
+    @PostMapping("/students/addStudents")
+    public String addStudent(@RequestParam Map<String, String> newstudent, HttpServletResponse response)
+    {
+        System.out.println("ADD student");
+        String newName = newstudent.get("name");
+        Integer newHeight = Integer.parseInt(newstudent.get("height"));
+        Integer newWeight= Integer.parseInt(newstudent.get("weight"));
+        Double newGpa= Double.parseDouble(newstudent.get("gpa"));
+        String newHair = newstudent.get("hair");
+        studentsRepo.save(new students(newName, newHair, newHeight, newWeight, newGpa));
+        response.setStatus(201);
+        return "/students/addedStudent";
 
-    // }
+    }
 
     // @PostMapping("/students/editStudents")
     // public String editStudent(@RequestParam Map<String, String> newstudent, HttpServletResponse response){

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
        <link rel="stylesheet" th:href="@{/styles.css}">
-       <!-- <script th:src="@{/script.js}"></script> -->
+       <script th:src="@{/script.js}"></script>
     <body>
         <main class="container-fluid">
             <h1>Students</h1>
@@ -21,7 +21,7 @@
                         <p th:text="${students.hair}" style="color: black; margin: 5px;"></p>
                     </div>
                 </div>
-                <!-- <section class="edit-student" style="display: none" id="edit-student" onsubmit="return validateForm()">
+                <section class="edit-student" style="display: none" id="edit-student" onsubmit="return validateForm()">
                     <form class="form" id="edit-student-form" action="../students/editStudents" method="post">
                         <h2>Edit Student</h2>
                         <input type="hidden" name="pid" id="pid" required>
@@ -41,7 +41,7 @@
                     </form>
                     <button class="delete-button" onclick="deleteStudent()">Delete Student</button>
                 </section>
-            </section> -->
+            </section>
         </main>
     </body>
 </html>
