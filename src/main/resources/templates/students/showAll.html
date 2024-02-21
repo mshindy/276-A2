@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
        <link rel="stylesheet" th:href="@{/styles.css}">
-       <script th:src="@{/script.js}"></script>
+       <!-- <script th:src="@{/script.js}"></script> -->
     <body>
         <main class="container-fluid">
             <h1>Students</h1>
@@ -15,8 +15,7 @@
             <section class="content-container">
                 <div class="students-container">
                     <div th:each="students: ${st}" th:style="'width:' +(${students.weight})+ 'px;' +'height:' +(${students.height}*2)+ 'px;' +' border: solid 3px '+${students.hair} +';'" 
-                    class="rectangle" th:id="${students.pid}"
-                    th:onclick="selectStudent([[${students.name}]], [[${students.weight}]],[[${students.hair}]], [[${students.gpa}]], [[${students.height}]],[[${students.pid}]])">
+                    class="rectangle" th:id="${students.pid}">
                         <p th:text="${students.name}" style="color: black; margin: 5px;"></p><br>
                         <p th:text="${students.gpa}" style="color: black; margin: 5px;"></p>
                         <p th:text="${students.hair}" style="color: black; margin: 5px;"></p>
