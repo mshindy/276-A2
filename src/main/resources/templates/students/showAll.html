@@ -9,10 +9,32 @@
        <script th:src="@{/script.js}"></script>
     <body>
         <main class="container-fluid">
+            <h1>Students</h1>
+            <button>Add Student</button>
             <div class="students-container">
-                <div th:each="students: ${st}" th:style="'width:' +(${students.weight}/3)+ 'px;' +'height:' +(${students.height}*2)+ 'px'" class="rectangle">
+                <div th:each="students: ${st}" th:style="'width:' +(${students.weight})+ 'px;' +'height:' +(${students.height}*2)+ 'px;' +' border: solid 3px '+${students.hair} +';'" 
+                 class="rectangle" th:id="${students.pid}"
+                 th:onclick="selectStudent([[${students.name}]], [[${students.weight}]],[[${students.hair}]], [[${students.gpa}]], [[${students.height}]],[[${students.pid}]])">
+                    <p th:text="${students.name}" style="color: black; margin: 5px;"></p><br>
+                    <p th:text="${students.gpa}" style="color: black; margin: 5px;"></p>
+                    <p th:text="${students.hair}" style="color: black; margin: 5px;"></p>
                 </div>
             </div>
+            <section class="edit-student">
+                <form class="form" id="edit-student-form" action="students/deleteStudents" method="delete">
+                    <h2>Delete Student</h2>
+                    <input type="text" name="pid" id="pidINput">
+                    <input type="text" id="nameInput" name="name" placeholder="NAME">
+                    <input type="text" id="heightInput" name="height" placeholder="HEIGHT">
+                    <input type="text" id="weightInput" name="weight" placeholder="WEIGHT">
+                    <input type="text" id="gpaInput" name="gpa" placeholder="GPA">
+                    <input type="text" id="hairInput" name="hair" placeholder="HAIR COLOR">
+                    <div class="buttons-container">
+                        <button class="delete-button" type="submit" value="SEND">Delete Student</button>
+                        <button id="submit-button" class="submit-button"  type="submit" value="SEND">Submit Changes</button>
+                    </div>
+                </form>
+            </section>
         </main>
     </body>
 </html>
