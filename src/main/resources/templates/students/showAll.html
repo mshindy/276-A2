@@ -11,29 +11,37 @@
         <main class="container-fluid">
             <h1>Students</h1>
             <a href="../add.html"><button>Add Student</button></a>
-            <div class="students-container">
-                <div th:each="students: ${st}" th:style="'width:' +(${students.weight})+ 'px;' +'height:' +(${students.height}*2)+ 'px;' +' border: solid 3px '+${students.hair} +';'" 
-                 class="rectangle" th:id="${students.pid}"
-                 th:onclick="selectStudent([[${students.name}]], [[${students.weight}]],[[${students.hair}]], [[${students.gpa}]], [[${students.height}]],[[${students.pid}]])">
-                    <p th:text="${students.name}" style="color: black; margin: 5px;"></p><br>
-                    <p th:text="${students.gpa}" style="color: black; margin: 5px;"></p>
-                    <p th:text="${students.hair}" style="color: black; margin: 5px;"></p>
-                </div>
-            </div>
-            <section class="edit-student">
-                <form class="form" id="edit-student-form" action="../students/editStudents" method="post">
-                    <h2>Delete Student</h2>
-                    <input type="hidden" name="pid" id="pid">
-                    <input type="text" id="nameInput" name="name" placeholder="NAME">
-                    <input type="text" id="heightInput" name="height" placeholder="HEIGHT">
-                    <input type="text" id="weightInput" name="weight" placeholder="WEIGHT">
-                    <input type="text" id="gpaInput" name="gpa" placeholder="GPA">
-                    <input type="text" id="hairInput" name="hair" placeholder="HAIR COLOR">
-                    <div class="buttons-container">
-                        <button id="submit-button" class="submit-button"  type="submit" value="SEND">Submit Changes</button>
+            <p id="message">click student to edit</p>
+            <section class="content-container">
+                <div class="students-container">
+                    <div th:each="students: ${st}" th:style="'width:' +(${students.weight})+ 'px;' +'height:' +(${students.height}*2)+ 'px;' +' border: solid 3px '+${students.hair} +';'" 
+                    class="rectangle" th:id="${students.pid}"
+                    th:onclick="selectStudent([[${students.name}]], [[${students.weight}]],[[${students.hair}]], [[${students.gpa}]], [[${students.height}]],[[${students.pid}]])">
+                        <p th:text="${students.name}" style="color: black; margin: 5px;"></p><br>
+                        <p th:text="${students.gpa}" style="color: black; margin: 5px;"></p>
+                        <p th:text="${students.hair}" style="color: black; margin: 5px;"></p>
                     </div>
-                </form>
-                <button class="delete-button" onclick="deleteStudent()">Delete Student</button>
+                </div>
+                <section class="edit-student" style="display: none" id="edit-student" onsubmit="return validateForm()">
+                    <form class="form" id="edit-student-form" action="../students/editStudents" method="post">
+                        <h2>Edit Student</h2>
+                        <input type="hidden" name="pid" id="pid" required>
+                        <label for="nameInput">Name:</label>
+                        <input type="text" id="nameInput" name="name" placeholder="NAME" required>
+                        <label for="heightInput">Height:</label>
+                        <input type="text" id="heightInput" name="height" placeholder="HEIGHT" required>
+                        <label for="weightInput">Weight:</label>
+                        <input type="text" id="weightInput" name="weight" placeholder="WEIGHT" required>
+                        <label for="gpaInput">GPA:</label>
+                        <input type="text" id="gpaInput" name="gpa" placeholder="GPA" required>
+                        <label for="hairInput">Hair Color:</label>
+                        <input type="text" id="hairInput" name="hair" placeholder="HAIR COLOR" required>
+                        <div class="buttons-container">
+                        <button id="submit-button" class="submit-button" type="submit" value="SEND">Submit Changes</button>
+                        </div>
+                    </form>
+                    <button class="delete-button" onclick="deleteStudent()">Delete Student</button>
+                </section>
             </section>
         </main>
     </body>
