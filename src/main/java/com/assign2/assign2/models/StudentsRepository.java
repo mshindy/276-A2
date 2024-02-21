@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StudentsRepository extends JpaRepository<students, Integer>{
     List<students> findByName(String name);
-    List<students> findByPid(int pid);
+    students findByPid(int pid);
     
 }

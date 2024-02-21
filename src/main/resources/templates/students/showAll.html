@@ -21,9 +21,9 @@
                 </div>
             </div>
             <section class="edit-student">
-                <form class="form" id="edit-student-form">
+                <form class="form" id="edit-student-form" action="../students/editStudents" method="post">
                     <h2>Delete Student</h2>
-                    <input type="text" name="pid" id="pid">
+                    <input type="hidden" name="pid" id="pid">
                     <input type="text" id="nameInput" name="name" placeholder="NAME">
                     <input type="text" id="heightInput" name="height" placeholder="HEIGHT">
                     <input type="text" id="weightInput" name="weight" placeholder="WEIGHT">

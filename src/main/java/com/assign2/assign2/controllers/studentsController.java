@@ -10,13 +10,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 // import com.assign2.assign2.models.StudentsRepository;
@@ -25,14 +29,14 @@ import org.springframework.ui.Model;
 public class studentsController {
     @Autowired
     private StudentsRepository studentsRepo;
-    @GetMapping("/students/view")
+    @GetMapping("students/view")
     public String getallStudents(Model model){
         System.out.println("Getting all students");
         //get all students from database
         List<students> students = studentsRepo.findAll();
         // end of databse call
         model.addAttribute("st", students);
-        return "students/showAll";
+        return "/students/showAll";
     }
 
     @PostMapping("/students/addStudents")
@@ -46,9 +50,31 @@ public class studentsController {
         String newHair = newstudent.get("hair");
         studentsRepo.save(new students(newName, newHair, newHeight, newWeight, newGpa));
         response.setStatus(201);
-        return "students/view";
+        return "/students/addedStudent";
 
     }
+
+    @PostMapping("/students/editStudents")
+    public String editStudent(@RequestParam Map<String, String> newstudent, HttpServletResponse response){
+        System.out.println("EDIT student");
+        String newName = newstudent.get("name");
+        Integer newHeight = Integer.parseInt(newstudent.get("height"));
+        Integer newWeight= Integer.parseInt(newstudent.get("weight"));
+        Double newGpa= Double.parseDouble(newstudent.get("gpa"));
+        String newHair = newstudent.get("hair");
+        
+        students toUpdate = studentsRepo.findByPid(Integer.parseInt(newstudent.get("pid")));
+        toUpdate.setName(newName);
+        toUpdate.setHeight(newHeight);
+        toUpdate.setWeight(newWeight);
+        toUpdate.setGpa(newGpa);
+        toUpdate.setHair(newHair);
+        studentsRepo.save(toUpdate);
+
+        return "students/editedStudent";
+        
+    }
+    
     @DeleteMapping("/students/{id}")
     public ResponseEntity<?> deleteStudent(@PathVariable Integer id) {
         try {
