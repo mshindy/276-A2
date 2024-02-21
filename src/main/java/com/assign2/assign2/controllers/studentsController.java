@@ -46,15 +46,27 @@ public class studentsController {
         String newHair = newstudent.get("hair");
         studentsRepo.save(new students(newName, newHair, newHeight, newWeight, newGpa));
         response.setStatus(201);
-        return "students/addedStudent";
+        return "students/view";
 
     }
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<?> deleteStudent(@PathVariable Integer id) {
+        try {
+            // Check if the student exists
+            if (!studentsRepo.existsById(id)) {
+                return ResponseEntity.notFound().build();
+            }
 
-    @DeleteMapping("/students/deleteStudents")
-    public String deleteStudent(@RequestParam Map<String, String> student, HttpServletResponse response){
-        Integer pid = Integer.parseInt(student.get("pid"));
-        studentsRepo.deleteById(pid);
-        return "students/deletedStudent";
+            // Delete the student
+            studentsRepo.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error deleting student: " + e.getMessage());
+        }
     }
+
+    
+     
+   
 }
 

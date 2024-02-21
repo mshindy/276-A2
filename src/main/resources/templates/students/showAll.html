@@ -10,7 +10,7 @@
     <body>
         <main class="container-fluid">
             <h1>Students</h1>
-            <button>Add Student</button>
+            <a href="../add.html"><button>Add Student</button></a>
             <div class="students-container">
                 <div th:each="students: ${st}" th:style="'width:' +(${students.weight})+ 'px;' +'height:' +(${students.height}*2)+ 'px;' +' border: solid 3px '+${students.hair} +';'" 
                  class="rectangle" th:id="${students.pid}"
@@ -21,19 +21,19 @@
                 </div>
             </div>
             <section class="edit-student">
-                <form class="form" id="edit-student-form" action="students/deleteStudents" method="delete">
+                <form class="form" id="edit-student-form">
                     <h2>Delete Student</h2>
-                    <input type="text" name="pid" id="pidINput">
+                    <input type="text" name="pid" id="pid">
                     <input type="text" id="nameInput" name="name" placeholder="NAME">
                     <input type="text" id="heightInput" name="height" placeholder="HEIGHT">
                     <input type="text" id="weightInput" name="weight" placeholder="WEIGHT">
                     <input type="text" id="gpaInput" name="gpa" placeholder="GPA">
                     <input type="text" id="hairInput" name="hair" placeholder="HAIR COLOR">
                     <div class="buttons-container">
-                        <button class="delete-button" type="submit" value="SEND">Delete Student</button>
                         <button id="submit-button" class="submit-button"  type="submit" value="SEND">Submit Changes</button>
                     </div>
                 </form>
+                <button class="delete-button" onclick="deleteStudent()">Delete Student</button>
             </section>
         </main>
     </body>
