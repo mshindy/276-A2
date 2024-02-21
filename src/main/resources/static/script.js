@@ -1,5 +1,6 @@
 
 function selectStudent(name, weight, hair, gpa, height, pid){
+    console.log("called select");
     document.getElementById("nameInput").value = name;
     document.getElementById("heightInput").value = height;
     document.getElementById("weightInput").value = weight;
