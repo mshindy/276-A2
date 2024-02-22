@@ -5,20 +5,30 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-       <link rel="stylesheet" th:href="@{/styles.css}">
+        <title>Add Student</title>
+       <link rel="stylesheet" href="/styles.css">
+       <script src="/script.js"></script>
     </head>
     <main>
-        <section class="add-student">
-            <form action="students/addStudents" method="post" class="add-student-form">
-                <input class="form-input" type="text" placeholder="Name" name="name">
-                <input class="form-input" type="text" placeholder="Hair Colour" name="hair">
-                <input class="form-input" type="text" placeholder="Weight" name="weight">
-                <input class="form-input" type="text" placeholder="Height" name="height">
-                <input class="form-input" type="text" placeholder="GPA" name="gpa">
-                <button id="submit-button" class="submit-button"  type="submit" value="SEND">Submit</button>
-
+        <a href="/students/view"><button class="submit-button" id="back-button">Back</button></a>
+        
+        <section class="add-student" onsubmit="return validateForm()">
+            <form action="students/addStudents" method="post"  class="form" >
+                <h2>Add New Student</h2>
+                        <input type="hidden" name="pid" id="pid" required>
+                        <label for="nameInput">Name:</label>
+                        <input type="text" id="nameInput" name="name" placeholder="NAME" required>
+                        <label for="heightInput">Height:</label>
+                        <input type="text" id="heightInput" name="height" placeholder="HEIGHT" required>
+                        <label for="weightInput">Weight:</label>
+                        <input type="text" id="weightInput" name="weight" placeholder="WEIGHT" required>
+                        <label for="gpaInput">GPA:</label>
+                        <input type="text" id="gpaInput" name="gpa" placeholder="GPA" required>
+                        <label for="hairInput">Hair Color:</label>
+                        <input type="text" id="hairInput" name="hair" placeholder="HAIR COLOR" required>
+                <button id="submit-button" class="submit-button"  type="submit" value="SEND" >Submit</button>
             </form>
+        
         </section>
     </main>
 </html>

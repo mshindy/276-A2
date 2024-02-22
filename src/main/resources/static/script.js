@@ -1,13 +1,13 @@
 
 function selectStudent(name, weight, hair, gpa, height, pid){
-    console.log("called select");
+    //get form inputs
     document.getElementById("nameInput").value = name;
     document.getElementById("heightInput").value = height;
     document.getElementById("weightInput").value = weight;
     document.getElementById("gpaInput").value = gpa;
     document.getElementById("hairInput").value = hair;
     document.getElementById("pid").value = pid;
-
+    //display edit student form
     var form = document.getElementById("edit-student");
     
     if(form.style.display == "none"){
@@ -15,12 +15,14 @@ function selectStudent(name, weight, hair, gpa, height, pid){
     }
 }
 
-function deleteStudent() {
+function deleteStudent(){
+    //check that all required fields are filled
     var form = document.getElementById("edit-student-form");
     if(!form.checkValidity()){
-        console.log(form.checkValidity());
         return;
     }
+    //check that fields have valid input and then make request to database
+    //catch errors
     if (validateForm()){
         var pid = document.getElementById("pid").value;
         console.log(pid);
@@ -50,10 +52,10 @@ function deleteStudent() {
             console.error("Error deleting student:", error);
             location.reload();
         });
-    }
-    
+    } 
 }
 
+//checks that all form inputs contain valid values
 function validateForm() {
     var nameInput = document.getElementById("nameInput");
     var heightInput = document.getElementById("heightInput");
@@ -62,7 +64,7 @@ function validateForm() {
     var hairInput = document.getElementById("hairInput");
   
     var letterRegex = /^[A-Za-z]+$/;
-    var intRegex = /^[A-Za-z0-9]+$/;
+    var intRegex = /^[0-9]+$/;
     var numberRegex = /^[0-9.]+$/;
   
     if (!letterRegex.test(nameInput.value)) {
@@ -90,5 +92,16 @@ function validateForm() {
       return false;
     }
 
-    return true;
+    return userConfirm();
   }
+
+  function userConfirm(){
+    var isConfirmed = confirm("Are you sure you want to submit?");
+    if (isConfirmed){
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}

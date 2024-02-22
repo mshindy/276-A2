@@ -1,12 +1,11 @@
 body{
-    background-color:#BECDE7;
+    background-color:#dbd3f5;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .container-fluid{
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* border: solid 3px blue; */
 }
 
 .content-container{
@@ -22,8 +21,6 @@ body{
     padding: 5px;
     width: 100px;
     margin-bottom: 10px;
-   
-
 }
 
 .delete-button:hover{
@@ -36,15 +33,6 @@ body{
     width: 100px;
     margin-bottom: 10px;
 }
-
-/* .buttons-container{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 150%;
-    margin-top: 20px;
-} */
 
 .rectangle
 {
@@ -71,9 +59,10 @@ body{
     margin-right: 10px;
 }
 
+
 .submit-button{
     background-color: blueviolet;
-    color: rgb(219, 192, 244);
+    color: white;
     border-radius: 1em;
     border: none;
     padding: 5px;
@@ -90,12 +79,21 @@ body{
     width: 100px;
 }
 
+.add-student{
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
 .form{
     display: flex;
     flex-direction: column;
     padding: 10px;
     align-items: center;
-    /* border: orange 2px solid; */
 }
 
 input{
@@ -106,10 +104,13 @@ input{
 
 .edit-student{
     margin-top: 10px;
-    /* border: black 3px solid; */
     width: 300px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     margin-left: 10px;
+}
+
+#back-button{
+    margin: 20px;
 }

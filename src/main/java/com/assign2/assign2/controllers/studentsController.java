@@ -1,6 +1,5 @@
 package com.assign2.assign2.controllers;
 
-// import java.util.ArrayList;
 
 import com.assign2.assign2.models.StudentsRepository;
 import com.assign2.assign2.models.students;
@@ -28,7 +27,8 @@ public class studentsController {
     @Autowired
     private StudentsRepository studentsRepo;
     @GetMapping("students/view")
-    public String getallStudents(Model model){
+    public String getallStudents(Model model)
+    {
         System.out.println("Getting all students");
         //get all students from database
         List<students> students = studentsRepo.findAll();
@@ -53,13 +53,14 @@ public class studentsController {
     }
 
     @PostMapping("/students/editStudents")
-    public String editStudent(@RequestParam Map<String, String> newstudent, HttpServletResponse response){
+    public String editStudent(@RequestParam Map<String, String> newstudent, HttpServletResponse response)
+    {
         System.out.println("EDIT student");
         String newName = newstudent.get("name");
+        String newHair = newstudent.get("hair");
         Integer newHeight = Integer.parseInt(newstudent.get("height"));
         Integer newWeight= Integer.parseInt(newstudent.get("weight"));
         Double newGpa= Double.parseDouble(newstudent.get("gpa"));
-        String newHair = newstudent.get("hair");
         
         students toUpdate = studentsRepo.findByPid(Integer.parseInt(newstudent.get("pid")));
         toUpdate.setName(newName);
@@ -69,8 +70,7 @@ public class studentsController {
         toUpdate.setHair(newHair);
         studentsRepo.save(toUpdate);
 
-        return "students/editedStudent";
-        
+        return "students/editedStudent"; 
     }
     
     @DeleteMapping("/students/{id}")
@@ -88,10 +88,6 @@ public class studentsController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error deleting student: " + e.getMessage());
         }
-    }
-
-    
-     
-   
+    } 
 }
 
